@@ -1,0 +1,168 @@
+#source /usr/share/cachyos-fish-config/cachyos-config.fish
+
+# overwrite greeting
+# potentially disabling fastfetch
+#function fish_greeting
+#    # smth smth
+#end
+# set -x GTK_IM_MODULE ibus
+# set -x XMODIFIERS "@im=ibus"
+# set -x QT_IM_MODULE ibus
+# set -gx XCURSOR_SIZE 48
+# set -gx XCURSOR_THEME Adwaita
+# set -gx QT_QPA_PLATFORMTHEME qt5ct
+set -gx GTK_FILE_CHOOSER thunar
+
+# Đặt Ghostty làm terminal mặc định
+# if type -q ghostty
+#   set -gx TERMINAL ghostty
+# end
+
+
+# PHP && COMPOSER
+set -x PATH /home/kiet/.php/php-8.3.20/bin $PATH
+set -x LD_LIBRARY_PATH /home/kiet/.php/php-8.3.20/lib
+set -x PATH /home/kiet/.local/bin/ $PATH
+set -gx PATH $PATH /home/kiet/.config/composer/vendor/bin
+
+
+# ALIASES
+
+# Rofi Aliases
+alias drun="rofi -show drun"
+
+# Database Aliases
+alias dbstart="sudo systemctl start mariadb"
+alias dbstop="sudo systemctl stop mariadb"
+alias dbrestart="sudo systemctl restart mariadb"
+alias dbstatus="sudo systemctl status mariadb"
+alias dbenable="sudo systemctl enable mariadb"
+alias dbdisable="sudo systemctl disable mariadb"
+alias dbreload="sudo systemctl reload mariadb"
+
+# Tăng âm lượng 5%
+alias volup="amixer set Master 5%+"
+# Giảm âm lượng 5%
+alias voldown="amixer set Master 5%-"
+# Mute/unmute âm lượng
+alias volmute="amixer set Master toggle"
+# Đặt âm lượng về các mốc 0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%
+alias volzero="amixer set Master 0%"
+alias volten="amixer set Master 10%"
+alias voltwenty="amixer set Master 20%"
+alias volthirty="amixer set Master 30%"
+alias volforty="amixer set Master 40%"
+alias volfifty="amixer set Master 50%"
+alias volsixty="amixer set Master 60%"
+alias volseventy="amixer set Master 70%"
+alias voleighty="amixer set Master 80%"
+alias volninety="amixer set Master 90%"
+alias volhundred="amixer set Master 100%"
+# Đặt âm lượng tự chọn
+alias volcustom="amixer set Master" # ví dụ: volcustom 50%
+
+# Tăng độ sáng 10%
+alias brightup="brightnessctl set +10%"
+# Giảm độ sáng 10%
+alias brightdown="brightnessctl set 10%-"
+# Đặt độ sáng về 100% (full sáng)
+alias brightfull="brightnessctl set 100%"
+# Đặt độ sáng về 50%
+alias brightmid="brightnessctl set 50%"
+# Đặt độ sáng về các mốc 0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%
+alias brightzero="brightnessctl set 0%"
+alias brightten="brightnessctl set 10%"
+alias brighttwenty="brightnessctl set 20%"
+alias brightthirty="brightnessctl set 30%"
+alias brightforty="brightnessctl set 40%"
+alias brightfifty="brightnessctl set 50%"
+alias brightsixty="brightnessctl set 60%"
+alias brightseventy="brightnessctl set 70%"
+alias brighteighty="brightnessctl set 80%"
+alias brightninety="brightnessctl set 90%"
+alias brighthundred="brightnessctl set 100%"
+# Đặt độ sáng tự chọn
+alias brightcustom="brightnessctl set" # ví dụ: brightcustom 50%
+
+# Xem thông tin pin
+alias upw=" upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+
+# Mở recorder
+alias grcd="flatpak run com.dec05eba.gpu_screen_recorder"
+
+# Mở PhpStorm, WebStorm
+alias pstorm="/opt/PhpStorm-243.26053.13/bin/phpstorm"
+alias wstorm="/opt/WebStorm-243.26053.12/bin/webstorm"
+
+# PHP Artisan Aliases
+alias pa="php artisan"
+alias pas="php artisan serve"
+alias padbf="php artisan migrate:fresh && php artisan db:seed"
+
+# Git Aliases
+alias gcm="git commit -m"
+
+# Cấu hình prompt hiện đại
+function fish_prompt
+    set -l last_status $status
+
+    # Lấy tên người dùng
+    set -l user_name (whoami)
+
+    # Hiển thị tên người dùng với màu nổi bật
+    set_color --bold brgreen
+    echo -n "$user_name"
+
+    # Hiển thị "in" với màu bình thường
+    set_color normal
+    echo -n " in "
+
+    # Hiển thị đường dẫn hiện tại với màu nổi bật
+    set_color --bold brblue
+    echo -n (prompt_pwd)
+
+    # Hiển thị trạng thái git nếu đang trong thư mục git
+    if command -q git
+        set -l git_branch (git branch 2>/dev/null | grep -e '\* ' | sed 's/^..\(.*\)/\1/')
+        if test -n "$git_branch"
+            set_color normal
+            echo -n " on "
+
+            # Hiển thị nhánh git với màu nổi bật
+            set_color --bold brmagenta
+            echo -n "$git_branch"
+
+            # Kiểm tra trạng thái git
+            set -l git_status (git status --porcelain 2>/dev/null)
+            if test -n "$git_status"
+                set_color red
+                echo -n " ✗"
+            else
+                set_color green
+                echo -n " ✓"
+            end
+        end
+    end
+
+    # Hiển thị biểu tượng dấu nhắc lệnh trên dòng mới
+    echo
+    if test $last_status -eq 0
+        set_color --bold brblue
+        echo -n "=> "
+    else
+        set_color --bold red
+        echo -n "=> "
+    end
+
+    set_color normal
+end
+
+# Cấu hình prompt bên phải (hiển thị thời gian)
+# function fish_right_prompt
+#     set_color 777 # màu xám nhạt
+#     echo (date "+%H:%M:%S")
+#     set_color normal
+# end
+
+# PHP từ source
+set -gx PATH /home/kiet/.php/current/bin $PATH

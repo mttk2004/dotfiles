@@ -1,0 +1,4 @@
+google-chrome
+ibus-bamboo
+visual-studio-code-bin
+waterfox-bin

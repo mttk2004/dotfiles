@@ -1,0 +1,129 @@
+(
+    max_notifications: 0,
+    timeout: 10000,
+    poll_interval: 32,
+    replace_enabled: false,
+    replacing_resets_timeout: true,
+    closing_enabled: true,
+    history_length: 10,
+    focus_follows: Mouse,
+    print_to_file: None,
+    min_windows_width: 100,
+    min_window_height: 10,
+    max_window_height: 200,
+
+    layout_blocks: [
+        (
+            name: "root",
+            parent: "",
+            hook: Hook(parent_anchor: TR, self_anchor: TR),
+            offset: Vec2(x: -7.0, y: 50.0),
+            params: NotificationBlock((
+                monitor: 0,
+                border_width: 3.0,
+                border_rounding: 13.0,
+                // Màu nền phù hợp với theme hiện đại
+                background_color: Color(hex: "#1a1b26"),
+                // Màu viền chính - green_primary
+                border_color: Color(hex: "#9ece6a"),
+                // Màu viền cho thông báo thấp - green_dark
+                border_color_low: Color(hex: "#2b7a78"),
+                // Màu viền cho thông báo quan trọng - error
+                border_color_critical: Color(hex: "#f7768e"),
+                // Màu viền cho thông báo tạm dừng - inactive
+                border_color_paused: Color(hex: "#565f89"),
+
+                gap: Vec2(x: 0.0, y: 8.0),
+                notification_hook: Hook(parent_anchor: BR, self_anchor: TR),
+            )),
+        ),
+
+        (
+            name: "image",
+            parent: "root",
+            hook: Hook(parent_anchor: TL, self_anchor: TL),
+            offset: Vec2(x: 0.0, y: 0.0),
+            // https://github.com/Toqozz/wired-notify/wiki/ImageBlock
+            params: ImageBlock((
+                image_type: Hint,
+                // We actually want 4px padding, but the border is 3px.
+                padding: Padding(left: 7.0, right: 0.0, top: 7.0, bottom: 7.0),
+                rounding: 8.0,
+                scale_width: 100,
+                scale_height: 100,
+                filter_mode: Lanczos3,
+            )),
+        ),
+
+        (
+            name: "summary",
+            parent: "image",
+            hook: Hook(parent_anchor: TR, self_anchor: TL),
+            offset: Vec2(x: 0.0, y: 0.0),
+            // https://github.com/Toqozz/wired-notify/wiki/TextBlock
+            params: TextBlock((
+                text: "<span underline='low'>%s</span>",
+                font: "CaskaydiaCove Nerd Font Bold 15",
+                ellipsize: Middle,
+                // Màu chữ chính - fg
+                color: Color(hex: "#c0caf5"),
+                // Màu chữ khi hover - green_primary
+                color_hovered: Color(hex: "#9ece6a"),
+                padding: Padding(left: 7.0, right: 7.0, top: 7.0, bottom: 0.0),
+                dimensions: (width: (min: 300, max: 300), height: (min: 0, max: 0)),
+            )),
+        ),
+
+        (
+            name: "body",
+            parent: "summary",
+            hook: Hook(parent_anchor: BL, self_anchor: LM),
+            offset: Vec2(x: 0.0, y: 20.0),
+            // https://github.com/Toqozz/wired-notify/wiki/ScrollingTextBlock
+            params: ScrollingTextBlock((
+                text: "%b",
+                font: "CaskaydiaCove Nerd Font 13",
+                // Màu chữ chính - fg
+                color: Color(hex: "#c0caf5"),
+                // Màu chữ khi hover - accent
+                color_hovered: Color(hex: "#7dcfff"),
+                padding: Padding(left: 7.0, right: 7.0, top: 3.0, bottom: 7.0),
+                width: (min: 0, max: 300),
+                scroll_speed: 0.25,
+                lhs_dist: 35.0,
+                rhs_dist: 35.0,
+                scroll_t: 1.0,
+            )),
+        ),
+
+        //(
+        //    name: "progress",
+        //    parent: "body",
+        //    hook: Hook(parent_anchor: BL, self_anchor: LM),
+        //    offset: Vec2(x: 0.0, y: 3.0),
+        //    params: ProgressBlock((
+        //        padding: Padding(left: 7.0, right: 7.0, top: 7.0, bottom: 7.0),
+        //        border_width: 3.0,
+        //        border_rounding: 5.0,
+        //        fill_rounding: 3.0,
+        //        border_color: Color(hex: "#9ece6a"),
+        //        background_color: Color(hex: "#1a1b26"),
+        //        fill_color: Color(hex: "#73daca"),
+        //        width: -1.0,
+        //        height: -1.0,
+        //    )),
+        //),
+    ],
+
+    shortcuts: ShortcutsConfig (
+        notification_interact: 1,
+        notification_close: 2,
+        // notification_closeall: 99,
+        notification_pause: 3,
+
+        //notification_action1: 3,
+        // notification_action2: 99,
+        // notification_action3: 99,
+        // notification_action4: 99,
+    ),
+)

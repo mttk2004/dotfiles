@@ -1,0 +1,179 @@
+/**
+ * modern-green-launcher.rasi - Theme hiện đại cho Launcher với tông xanh lá
+ * Phù hợp với bảng màu trong ~/.config/qtile/themes/colors.py
+ * Chế độ Grid dành cho App Launcher
+ */
+
+* {
+    /* Màu từ bảng màu colors.py */
+    bg:             #1a1b26;
+    bg-alt:         #24283b;
+    fg:             #c0caf5;
+    green-primary:  #9ece6a;
+    green-secondary:#73daca;
+    green-dark:     #2b7a78;
+    green-light:    #a6e3a1;
+    green-accent:   #00dc82;
+    accent:         #7dcfff;
+    warning:        #ff9e64;
+    error:          #f7768e;
+    inactive:       #565f89;
+
+    /* Thuộc tính cơ bản */
+    background-color:   transparent;
+    text-color:         @fg;
+    highlight:          bold #a6e3a1;
+
+    /* Thiết lập window */
+    margin:             0px;
+    padding:            0px;
+    spacing:            0px;
+    border-radius:      12px;
+    font:               "CaskaydiaCove Nerd Font SemiBold 14";
+}
+
+window {
+    background-color:   rgba(26, 27, 38, 0.95);
+    border:             2px;
+    border-color:       @green-primary;
+    border-radius:      12px;
+    padding:            20px;
+    width:              800px;
+    height:             500px;
+    transparency:       "real";
+    location:           center;
+    x-offset:           0;
+    y-offset:           0;
+}
+
+mainbox {
+    padding:            0px;
+    border:             0px;
+    spacing:            15px;
+    background-color:   transparent;
+    children:           [ "inputbar", "message", "listview" ];
+}
+
+inputbar {
+    background-color:   @bg-alt;
+    border:             0px;
+    border-color:       @green-primary;
+    border-radius:      12px;
+    padding:            14px;
+    spacing:            8px;
+    margin:             0px;
+    children:           [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:            true;
+    background-color:   inherit;
+    padding:            0px 0px 0px 5px;
+    text-color:         @green-accent;
+    font:               "CaskaydiaCove Nerd Font SemiBold 15";
+}
+
+entry {
+    background-color:   inherit;
+    text-color:         @fg;
+    cursor:             text;
+    placeholder:        "Tìm kiếm ứng dụng...";
+    placeholder-color:  @inactive;
+    font:               "CaskaydiaCove Nerd Font 15";
+}
+
+listview {
+    background-color:   transparent;
+    columns:            4;
+    lines:              3;
+    spacing:            4px;
+    cycle:              false;
+    dynamic:            true;
+    layout:             vertical;
+    border:             0px;
+    scrollbar:          true;
+}
+
+scrollbar {
+    handle-width:       5px;
+    handle-color:       @green-primary;
+    background-color:   @bg-alt;
+    border-radius:      10px;
+}
+
+element {
+    background-color:   @bg-alt;
+    text-color:         @fg;
+    orientation:        vertical;
+    border-radius:      10px;
+    padding:            15px 10px 15px 10px;
+    spacing:            5px;
+}
+
+element-icon {
+    size:               48px;
+    horizontal-align:   0.5;
+    vertical-align:     0.5;
+    background-color:   transparent;
+    text-color:         inherit;
+}
+
+element-text {
+    expand:             true;
+    horizontal-align:   0.5;
+    vertical-align:     0.5;
+    background-color:   transparent;
+    text-color:         inherit;
+    highlight:          inherit;
+    margin:             5px 0px 0px 0px;
+    font:               "CaskaydiaCove Nerd Font 13";
+}
+
+element normal.normal {
+    background-color:   @bg-alt;
+    text-color:         @fg;
+}
+
+element alternate.normal {
+    background-color:   @bg-alt;
+    text-color:         @fg;
+}
+
+element selected.normal {
+    background-color:   @green-dark;
+    text-color:         @fg;
+}
+
+message {
+    background-color:   @green-dark;
+    border:             0px;
+    border-color:       @green-accent;
+    padding:            10px;
+    border-radius:      10px;
+}
+
+textbox {
+    text-color:         @fg;
+    background-color:   inherit;
+}
+
+mode-switcher {
+    border:             0px;
+    border-color:       @green-accent;
+    padding:            4px;
+    border-radius:      10px;
+}
+
+button {
+    padding:            8px;
+    border:             0px;
+    border-radius:      10px;
+    background-color:   @bg-alt;
+    text-color:         @fg;
+    horizontal-align:   0.5;
+}
+
+button selected {
+    background-color:   @green-primary;
+    text-color:         @bg;
+}

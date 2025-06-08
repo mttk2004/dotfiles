@@ -1,0 +1,156 @@
+/**
+ * modern-green.rasi - Theme hiện đại với tông xanh lá cho Rofi
+ * Phù hợp với bảng màu trong ~/.config/qtile/themes/colors.py
+ */
+
+* {
+    /* Màu từ bảng màu colors.py */
+    bg:             #1a1b26;
+    fg:             #c0caf5;
+    green-primary:  #9ece6a;
+    green-secondary:#73daca;
+    green-dark:     #2b7a78;
+    green-light:    #a6e3a1;
+    green-accent:   #00dc82;
+    accent:         #7dcfff;
+    warning:        #ff9e64;
+    error:          #f7768e;
+    inactive:       #565f89;
+
+    /* Thuộc tính cơ bản */
+    background-color:   transparent;
+    text-color:         @fg;
+    highlight:          bold #a6e3a1;
+
+    /* Thiết lập window */
+    margin:             0px;
+    padding:            0px;
+    spacing:            0px;
+    border-radius:      12px;
+    font:               "CaskaydiaCove Nerd Font SemiBold 14";
+}
+
+window {
+    background-color:   @bg;
+    border:             2px;
+    border-color:       @green-primary;
+    border-radius:      12px;
+    padding:            15px;
+    width:              600px;
+    transparency:       "real";
+}
+
+mainbox {
+    padding:            12px;
+    spacing:            0px;
+    background-color:   transparent;
+}
+
+inputbar {
+    background-color:   @bg;
+    border:             0 0 2px 0;
+    border-color:       @green-primary;
+    border-radius:      12px 12px 0px 0px;
+    padding:            12px;
+    spacing:            0px;
+    margin:             0px 0px 10px 0px;
+    children:           [ prompt, entry ];
+}
+
+prompt {
+    enabled:            true;
+    background-color:   inherit;
+    padding:            0px 10px 0px 0px;
+    text-color:         @green-accent;
+    font:               "CaskaydiaCove Nerd Font SemiBold 14";
+}
+
+entry {
+    background-color:   inherit;
+    text-color:         @fg;
+    placeholder:        "Search...";
+    placeholder-color:  @inactive;
+    font:               "CaskaydiaCove Nerd Font 14";
+}
+
+listview {
+    background-color:   transparent;
+    columns:            1;
+    lines:              7;
+    spacing:            5px;
+    fixed-height:       true;
+    dynamic:            true;
+    border:             0px;
+    border-color:       @bg;
+    scrollbar:          true;
+}
+
+scrollbar {
+    handle-width:       5px;
+    handle-color:       @green-primary;
+    background-color:   @bg;
+    border-radius:      0px;
+}
+
+element {
+    background-color:   transparent;
+    padding:            10px;
+    spacing:            10px;
+    border-radius:      8px;
+}
+
+element normal.normal {
+    background-color:   @bg;
+    text-color:         @fg;
+}
+
+element alternate.normal {
+    background-color:   @bg;
+    text-color:         @fg;
+}
+
+element selected.normal {
+    background-color:   @green-dark;
+    text-color:         @fg;
+    border:             0px;
+}
+
+element-icon {
+    size:               24px;
+    padding:            0px 10px 0px 0px;
+    background-color:   transparent;
+    text-color:         inherit;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    highlight:          inherit;
+    vertical-align:     0.5;
+}
+
+message {
+    background-color:   @green-dark;
+    border:             0px;
+    border-color:       @green-accent;
+    padding:            10px;
+    border-radius:      8px;
+}
+
+textbox {
+    text-color:         @fg;
+    background-color:   inherit;
+}
+
+button {
+    padding:            2px;
+    border:             0px;
+    border-radius:      8px;
+    background-color:   @green-dark;
+    text-color:         @fg;
+}
+
+button selected {
+    background-color:   @green-primary;
+    text-color:         @bg;
+}
