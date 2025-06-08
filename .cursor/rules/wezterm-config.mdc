@@ -1,0 +1,56 @@
+---
+description:
+globs: **/wezterm/**
+alwaysApply: false
+---
+---
+type: Auto Attached
+pattern: "**/wezterm/**"
+description: WezTerm terminal configuration guidelines
+---
+
+# WezTerm Configuration Guidelines
+
+## Core Configuration Areas
+- Font and rendering settings
+- Color schemes and themes
+- Key bindings and shortcuts
+- Window and tab management
+- Integration with system
+
+## Font Configuration
+```lua
+config.font = wezterm.font("CaskaydiaCove Nerd Font", {weight = "Light"})
+config.font_size = 12.0
+config.line_height = 1.4
+```
+
+## Theme Integration
+- Support for multiple color schemes
+- Match window manager theme
+- Easy theme switching
+- Transparency and blur effects for modern look
+
+## Key Bindings
+- Consistent with system shortcuts
+- Tab management (Ctrl+Shift+T, Ctrl+PageUp/Down)
+- Pane splitting and navigation
+- Integration with Fish shell features
+
+## Performance Optimizations
+- GPU acceleration when available
+- Efficient scrollback buffer
+- Fast startup time
+- Minimal resource usage
+
+## Window Management
+- Smart tab bar (hide when single tab)
+- Window padding and margins
+- Integration with tiling window managers
+- Multi-monitor support
+
+## Fish Shell Integration
+- Proper shell integration
+- Support for Fish completions
+- Compatible with Fish abbreviations
+- Terminal-specific Fish functions

@@ -1,0 +1,61 @@
+---
+description:
+globs: **/qtile/**
+alwaysApply: false
+---
+---
+type: Auto Attached
+pattern: "**/qtile/**"
+description: Qtile-specific configuration guidelines
+---
+
+# Qtile Configuration Guidelines
+
+## Structure Requirements
+- Main config in `config.py`
+- Separate modules for: keys, groups, layouts, screens, widgets
+- Use `autostart.sh` for startup applications
+- Create theme files for easy color scheme switching
+
+## Key Binding Philosophy
+- Super (Mod4) as primary modifier
+- Logical groupings (Super+[1-9] for groups, Super+Shift for window ops)
+- Web development shortcuts (browsers, terminals, editors)
+- Include both Qtile and Xmonad compatible bindings where possible
+
+## Layout Preferences
+- Focus on tiling layouts: MonadTall, Max, Columns
+- Configure gaps and borders for modern aesthetic
+- Support for floating windows when needed
+- Multi-monitor support
+
+## Widget Configuration
+- Minimal, informative status bar
+- System info: CPU, memory, network, battery
+- Time/date display
+- Current group/workspace indicator
+- Use consistent color scheme
+
+## Theme Integration
+- Support for multiple color schemes (Nord, Catppuccin, Gruvbox)
+- Easy theme switching mechanism
+- Consistent colors across bar, borders, and notifications
+
+## Performance Considerations
+- Efficient widget updates
+- Minimal resource usage
+- Fast group switching
+- Smooth animations where appropriate
+
+## Example structure:
+```python
+# config.py
+from modules.keys import keys
+from modules.groups import groups
+from modules.layouts import layouts
+from modules.screens import screens
+from modules.themes import current_theme
+
+# Apply theme
+colors = current_theme.colors
+```

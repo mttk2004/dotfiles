@@ -1,0 +1,58 @@
+---
+description:
+globs: **/fish/**
+alwaysApply: false
+---
+---
+type: Auto Attached
+pattern: "**/fish/**"
+description: Fish shell configuration guidelines
+---
+
+# Fish Shell Configuration Guidelines
+
+## Configuration Structure
+```
+fish/
+├── config.fish          # Main configuration
+├── functions/           # Custom functions
+├── completions/         # Custom completions
+└── conf.d/             # Configuration snippets
+```
+
+## Core Principles
+- Use abbr for frequently used commands
+- Create functions for complex operations
+- Maintain clean, readable syntax
+- Optimize for development workflow
+
+## Development-Focused Configurations
+- Git shortcuts and aliases
+- Node.js/npm workflow enhancements
+- Docker command shortcuts
+- Project navigation functions
+
+## System Integration
+- Integration with window manager shortcuts
+- Terminal-specific optimizations
+- File manager integration
+- Clipboard utilities
+
+## Performance Considerations
+- Fast prompt rendering
+- Efficient path handling
+- Minimal startup time
+- Lazy loading of heavy functions
+
+## Example Function Structure
+```fish
+function dev_setup --description "Setup development environment"
+    # Implementation
+end
+```
+
+## Abbreviations Categories
+- Git operations: `ga`, `gc`, `gp`, `gl`
+- System operations: `ll`, `la`, `..`, `...`
+- Development: `nr`, `ni`, `nrd`
+- Navigation: `cdp` (cd to projects), `cdc` (cd to configs)

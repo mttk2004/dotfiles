@@ -1,0 +1,111 @@
+---
+description:
+globs: **/scripts/**
+alwaysApply: false
+---
+---
+type: Auto Attached
+pattern: "**/scripts/**"
+description: Installation and utility script guidelines
+---
+
+# Installation Script Guidelines
+
+## Script Requirements
+- Proper error handling with `set -e`
+- Colored output for better UX
+- Backup functionality before any changes
+- Rollback/restore capabilities
+- Dependency checking
+
+## Safety Features
+- Always create timestamped backups
+- Validate file existence before operations
+- Ask for confirmation on destructive operations
+- Provide verbose output for debugging
+- Support dry-run mode
+
+## Functionality Categories
+1. **Installation**: Full system setup
+2. **Backup**: Create configuration backups
+3. **Restore**: Restore from backups
+4. **Update**: Update specific configurations
+5. **Utilities**: Helper functions
+
+## Code Structure
+```bash
+#!/bin/bash
+set -e
+
+# Constants and colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+# ... other colors
+
+# Logging functions
+log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
+# ... other log functions
+
+# Main functionality
+main() {
+    # Implementation
+}
+
+# Error handling
+trap 'log_error "Script failed on line $LINENO"' ERR
+```
+
+## Package Management
+- Support for pacman (Arch packages)
+- AUR package installation with yay/paru
+- Development tools installation
+- Flatpak applications if needed
+
+## Validation and Testing
+- Check for required dependencies
+- Validate configuration syntax where possible
+- Test symlink creation
+- Verify service status after installation
+```
+
+## README.md Template
+
+```markdown
+# My Dotfiles
+
+Modern, minimalist dotfiles for CachyOS/Arch Linux with Qtile and Xmonad support.
+
+## Features
+- 🎯 **Qtile Configuration**: Primary tiling window manager setup
+- 🔮 **Xmonad Support**: Secondary WM configuration
+- 🖥️ **WezTerm**: Modern terminal emulator configuration
+- 🐟 **Fish Shell**: Developer-friendly shell setup
+- 🎨 **Multiple Themes**: Nord, Catppuccin, Gruvbox support
+- 🔧 **Development Tools**: Optimized for web development
+- 📦 **Package Management**: Automated installation scripts
+
+## Quick Start
+```bash
+git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./scripts/install.sh
+```
+
+## Components
+- **Window Managers**: Qtile (primary), Xmonad (planned)
+- **Terminal**: WezTerm with custom configuration
+- **Shell**: Fish with developer abbreviations
+- **Themes**: Multiple colorscheme support
+- **Scripts**: Installation and management utilities
+
+## Screenshots
+[Add your screenshots here]
+
+## Installation
+[Detailed installation instructions]
+
+## Customization
+[How to customize the configurations]
+
+## Contributing
+[Contribution guidelines if open source]

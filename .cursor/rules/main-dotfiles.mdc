@@ -1,0 +1,94 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+---
+type: Always
+description: Core dotfiles development guidelines and preferences
+---
+
+# Dotfiles Development Rules
+
+You are helping develop a comprehensive dotfiles repository for a CachyOS/Arch Linux power user who values modern, minimalist, and sophisticated system configurations.
+
+## User Profile & Preferences
+- **OS**: CachyOS (Arch-based)
+- **Window Managers**: Qtile (primary), Xmonad (secondary/future)
+- **Terminal**: WezTerm
+- **Shell**: Fish
+- **Use Case**: Web development, system customization
+- **Aesthetic**: Modern, minimalist, sophisticated
+
+## Core Principles
+1. **Modularity**: Each configuration should be self-contained and easily toggleable
+2. **Backup Safety**: Always create backups before modifying existing configs
+3. **Cross-WM Compatibility**: Configs should work with both Qtile and Xmonad
+4. **Performance**: Optimize for fast startup and low resource usage
+5. **Maintainability**: Clear structure, good documentation, version control
+
+## Code Style Guidelines
+
+### Shell Scripts (Bash)
+- Use `set -e` for error handling
+- Include proper logging with colors
+- Add help text and argument parsing
+- Use meaningful variable names with UPPER_CASE for constants
+- Include error checking for dependencies
+
+### Python (Qtile configs)
+- Follow PEP 8 style guidelines
+- Use descriptive variable names
+- Add docstrings for custom functions
+- Group imports logically (standard, third-party, local)
+- Use configuration dictionaries for easy customization
+
+### Haskell (Xmonad configs)
+- Use clear, descriptive function names
+- Group configurations by functionality
+- Add comments for complex operations
+- Follow standard Haskell formatting conventions
+
+### Lua (WezTerm configs)
+- Use snake_case for variable names
+- Group configurations by category
+- Add comments for customizations
+- Use local variables where appropriate
+
+### Fish Shell
+- Use descriptive function names
+- Add function descriptions
+- Use abbr for common shortcuts
+- Organize functions by purpose
+
+## File Organization Patterns
+- Keep configs in `configs/` subdirectories by application
+- Use `themes/` for colorscheme definitions
+- Place utility scripts in `scripts/utils/`
+- Document everything in `docs/`
+- Track package dependencies in `packages/`
+
+## Documentation Requirements
+- Every major config file needs a header comment explaining its purpose
+- Include installation/usage instructions
+- Add screenshots for visual configurations
+- Maintain a comprehensive README
+- Document any custom keybindings or shortcuts
+
+## Security Considerations
+- Never hardcode sensitive information
+- Use environment variables for user-specific paths
+- Validate inputs in installation scripts
+- Create proper backups before any modifications
+
+## Performance Optimization
+- Lazy-load configurations where possible
+- Minimize startup time for shell and terminal
+- Use efficient data structures
+- Profile critical path operations
+
+## Testing Guidelines
+- Test configurations on fresh systems
+- Verify backup and restore functionality
+- Check cross-compatibility between window managers
+- Validate all symlinks are created correctly
